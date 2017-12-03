@@ -33,14 +33,18 @@ Notable features:
 
 1 - Install the packages above by means of Pip
 2 - In your terminal go into the project's root folder and type in the below to collect all static assets:
+
 ```
 python manage.py collectstatic
 ```
+
 3 - Link to your own SQL database in settings.py (or skip this step if you would like to proceed along Django's standard SQLite database)
+
 4 - Get a Google Maps API key and insert it in the following templates:
     - events/event_form.html
     - events/event_detail.html
     - event/event_update_form.html
+    
 5 - make migrations and migrate
 6 - create a superuser ("python manage.py createsuperuser")
 7 - create a site in the admin panel (and put the corresponding site_id in your settings.py file)
