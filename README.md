@@ -12,7 +12,7 @@ Notable features:
 - Includes mail templates (from MailChimp) for sign up confirmation and password resets
 
 #### Screenshot - Homepage
-![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Home.jpeg)
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/blob/master/gitpics/Home.jpg)
 
 #### Screenshot - Event
 ![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Event_detail.jpeg)
