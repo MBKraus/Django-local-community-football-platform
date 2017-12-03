@@ -1,0 +1,32 @@
+.list-group-item {
+     border-right: none;
+     border-left: none;
+    }
+
+#footer {
+    background-color: #eee;}
+
+
+.post.media {
+    border-top: 1px solid #ddd;
+    }
+
+.jumbotron {
+    position: relative;
+    background: #000 url("../img/back5new.jpg") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    margin-top: 0px;
+    min-height: 500px;
+}
+
+.navbar.navbar-default {
+    margin-bottom: 0px;
+    background-color: white;}
+}
+
+#containertop {
+    margin-top: 40px;
+    }
