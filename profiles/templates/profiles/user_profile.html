@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+
+
+{% block title %}
+
+<title>My profile</title>
+
+{% endblock %}
+
+{% block body_content %}
+
+<div class="container" style="margin-top:40px;">
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <h1>My profile</h1>
+
+            <br/>
+
+            <table class="table">
+
+                <tbody>
+
+                <tr>
+                    <td>Username</td>
+                    <td>{{ profile.username }}</td>
+                </tr>
+
+                <tr>
+                    <td>Email</td>
+                    <td>{{ profile.email }}</td>
+                </tr>
+
+                <tr>
+                    <td>Creation date profile</td>
+                    <td>{{ profile.date_joined }}</td>
+                </tr>
+
+                <tr>
+                    <td>Bio</td>
+                    <td>{{ profile.bio }}</td>
+                </tr>
+
+                <tr>
+                    <td>Date of birth</td>
+                    <td>{{ profile.date_of_birth }}</td>
+                </tr>
+
+                <tr>
+                    <td>Favorite position</td>
+                    <td>{{ profile.get_position_display }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <br/>
+
+            {% if request.user == profile %}
+
+            <a href="{% url 'profiles:ProfileEdit' %}" class="btn btn-primary btn-large">Edit profile</a>
+
+            {% endif %}
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <br/>
+
+            <h5>Your upcoming matches </h5>
+
+            <br/><br/>
+
+            {% for event in eventscomingup %}
+
+            <a href="{% url 'events:single' slug=event.slug %}"><p>{{ event.name }}</p></a>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="col-md-2">
+
+            <br/>
+
+            <h5>Matches you participated in</h5>
+
+            <br/><br/>
+
+            {% for event in eventspast %}
+
+            <a href="{% url 'events:single' slug=event.slug %}"><p>{{ event.name }}</p></a>
+
+            {% endfor %}
+
+            <!--<h4>All events where you are registered in</h4>
+
+            <br/><br/>
+            {% for event in events %}
+
+            <a href="{% url 'events:single' slug=event.event.slug %}"><p>{{ event.event.name }}</p></a>
+
+            {% endfor %}
+            -->
+        </div>
+
+    </div>
+
+    <div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+
+</div>
+
+{% endblock %}
+

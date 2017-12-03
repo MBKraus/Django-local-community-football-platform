@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block title %}
+
+<title>Delete message</title>
+
+{% endblock %}
+
+{% block body_content %}
+
+<div class="container" style="margin-top:40px;">
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			<h3>Are you sure you want to delele this message?</h3>
+
+				<div class="posts">
+
+					{% include "posts/_post.html" with post=object hide_delete=True %}
+
+				</div>
+
+			<form method="POST">
+
+			{% csrf_token %}
+
+				<br/>
+
+				<input type="submit" value="Yes" class="btn btn-danger btn-large"> &nbsp;&nbsp;
+
+				<a href="javascript:history.go(-1)" class="btn btn-simple btn-large btn-default">No, I don't</a>
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+
+</div>
+
+
+{% endblock %}
+

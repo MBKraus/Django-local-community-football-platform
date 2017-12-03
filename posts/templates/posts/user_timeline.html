@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+
+{% block body_content %}
+
+<div class="col-md-4">
+
+	<h4>Name</h4>
+
+    <strong>Username</strong>
+
+    Bio
+
+</div>
+
+
+<div class="col-md-8">
+
+	{% for post in post_list %}
+
+	{% include "posts/_post.html" %}
+
+	{% endfor %}
+</div>
+
+{% endblock %}

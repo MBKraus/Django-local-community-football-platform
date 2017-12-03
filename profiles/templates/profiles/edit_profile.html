@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+
+
+
+{% block title %}
+
+<title>Edit profile</title>
+
+{% endblock %}
+
+{% block body_content %}
+
+<div class="container" style="margin-top:40px;">
+
+    <div class="row">
+
+         <div class="col-md-8">
+
+             <h1>Edit profile</h1><br/>
+
+             <form action="" method="post">
+
+                 {% csrf_token %}
+                 {% bootstrap_form form %}
+
+                 <br/>
+
+                <input type="submit" value="Save" class="btn btn-default">
+
+             </form>
+
+         </div>
+
+    </div>
+
+    <div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+
+</div>
+
+
+
+{% endblock %}
+
