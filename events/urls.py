@@ -1,0 +1,83 @@
+from django.conf.urls import url
+
+app_name = 'events'
+
+from . import views
+
+urlpatterns = [
+    url(
+        r"^$",
+        views.AllEvents.as_view(),
+        name="list"
+    ),
+    url(
+        r"^bydate/$",
+        views.AllEventsByDate.as_view(),
+        name="listByDate"
+    ),
+    url(
+        r"^twoweeks/$",
+        views.EventsNextTwoWeeks.as_view(),
+        name="TwoWeeks"
+    ),
+    url(
+        r"^fourweeks/$",
+        views.EventsNextFourWeeks.as_view(),
+        name="FourWeeks"
+    ),
+    url(
+        r"^amsterdam/$",
+        views.LocationAmsterdam.as_view(),
+        name="LocationAmsterdam"
+    ),
+    url(
+        r"^rotterdam/$",
+        views.LocationRotterdam.as_view(),
+        name="LocationRotterdam"
+    ),
+    url(
+        r"^denhaag/$",
+        views.LocationDenHaag.as_view(),
+        name="LocationDenHaag"
+    ),
+    url(
+        r"^utrecht/$",
+        views.LocationUtrecht.as_view(),
+        name="LocationUtrecht"
+    ),
+    url(
+        r"^new/$",
+        views.CreateEvent.as_view(),
+        name="create"
+    ),
+    url(
+        r"^in/(?P<slug>[-\w]+)/$",
+        views.SingleEvent.as_view(),
+        name="single"
+    ),
+    url(
+        r"join/(?P<slug>[-\w]+)/$",
+        views.JoinEvent.as_view(),
+        name="join"
+    ),
+    url(
+        r"leave/(?P<slug>[-\w]+)/$",
+        views.LeaveEvent.as_view(),
+        name="leave"
+    ),
+    url(
+        r"delete/(?P<slug>[-\w]+)/$",
+        views.DeleteEvent.as_view(),
+        name="delete"
+    ),
+    url(
+        r"update/(?P<slug>[-\w]+)/$",
+        views.UpdateEvent.as_view(),
+        name="update"
+    ),
+    url(
+        r"search/$",
+        views.Search,
+        name='search'
+    ),
+]

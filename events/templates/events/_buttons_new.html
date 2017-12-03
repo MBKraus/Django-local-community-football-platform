@@ -1,0 +1,18 @@
+{% if in_event %}
+
+<li><a href="#" data-toggle="modal" data-target="#postModal"><h5>Post a message</h5></a></li>
+
+{% endif %}
+
+{% if in_event and created_by_user == True %}
+
+{% elif in_event and created_by_user == False %}
+
+<li><a href="{% url 'events:leave' slug=event.slug %}"><h5>Cancel your participation</h5></a></li>
+
+{% else %}
+
+<li><a href="{% url 'events:join' slug=event.slug %}"><h5>Participate in this match</h5></a></li>
+
+{% endif %}
+

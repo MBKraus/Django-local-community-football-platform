@@ -1,0 +1,114 @@
+{% extends "events/layout.html" %}
+{% load static from staticfiles %}
+
+
+{% block title %}
+
+<title>Search results</title>
+
+{% endblock %}
+
+{% block event_content %}
+
+{% if event %}
+
+<div class="container" style="margin-top:40px;">
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			<h5>Found {{ event|length }} match{{ event|length|pluralize:"es" }}</h5>
+
+			<br/>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			<div class="list-group">
+
+			{% for event in event %}
+
+			<a class="list-group-item container-fluid" href="{% url 'events:single' slug=event.slug %}">
+
+				<div class="row">
+
+					<div class="col-md-8">
+
+						<h4 class="title list-group-item-heading">{{ event.name }}</h4>
+
+						<br/>
+
+						<h5 class="title list-group-item-heading">Organised by: {{ event.created_by }}</h5>
+						<h5 class="title list-group-item-heading">Location: {{ event.address }}</h5>
+
+					</div>
+
+					<div class="col-md-4">
+
+						<span class="badge">{{ event.members.count }}</span> participant{{ event.members.count|pluralize }}
+
+						<br/><br/>
+
+						<span class="badge">Date: {{ event.date }}</span>
+
+						<br/>
+
+						<span class="badge">Time: {{ event.time }}</span>
+
+					</div>
+
+				</div>
+
+			</a>
+
+			{% endfor %}
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+
+</div>
+
+{% else %}
+
+<div class="container" style="margin-top:40px;">
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			<h5>Your search yielded no results.</h5>
+
+			<br/>
+
+		</div>
+
+	</div>
+
+	<div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

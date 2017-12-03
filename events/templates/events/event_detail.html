@@ -1,0 +1,188 @@
+{% extends "events/layout.html" %}
+{% load static from staticfiles %}
+{% load event_tags %}
+
+{% block title %}
+
+<title>{{ event.name }}</title>
+
+{% endblock %}
+
+{% block event_content %}
+
+{% load post_tags %}
+{% post_form %}
+
+<style>
+      #map {
+        height: 300px;
+        width: 100%;
+        border-radius: 4px;
+       }
+</style>
+
+<div class="container" style="margin-top:40px;">
+
+		<div class="row col-md-12">
+
+			<h1 class="title">{{ event.name }}</h1>
+			<br/>
+
+		</div>
+
+		<div class="row col-md-12">
+
+			<ul class="nav nav-tabs">
+
+				{% event_buttons_new event %}
+
+				{% if request.user == event.created_by %}
+
+				<li><a href="{% url 'events:update' slug=event.slug %}"><h5>Edit event</h5></a></li>
+				<li><a href="{% url 'events:delete' slug=event.slug %}"><h5>Cancel event</h5></a></li>
+
+				{% endif %}
+
+				</ul>
+
+				<br/><br/>
+
+		</div>
+
+		<div class="row">
+
+			<div align="center" class="col-md-4">
+
+				<h4> <span class="glyphicon glyphicon-th-list"></span>&nbsp;Details </h4>
+
+				<br/>
+
+				<table class="table">
+
+                	<tbody>
+
+					<tr>
+
+						<td>Description</td>
+						<td>{{ event.description|linebreaks }}</td>
+
+					</tr>
+
+					<tr>
+
+						<td>Organised by</td>
+						<td>{{ event.created_by }}</td>
+
+					</tr>
+
+					<tr>
+
+						<td>Location</td>
+						<td>{{ event.address }} </td>
+
+					</tr>
+
+					<tr>
+
+						<td>Date</td>
+						<td>{{ event.date }}</td>
+
+
+					</tr>
+
+					<tr>
+
+						<td>Time</td>
+						<td>{{ event.time }}</p></td>
+
+					</tr>
+
+                	</tbody>
+
+            	</table>
+
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+
+			</div>
+
+			<div align="left" class="col-md-4">
+
+				<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span>&nbsp;Participants</h4>
+
+				<br/>
+
+				<ul>
+
+					{% for members in event.members.all %}
+
+					<a align="left" href="{% url 'profiles:viewprofile' username=members.username %}"><h4><span class="label label-primary">{{ members.username }} </span></h4></a>
+
+                    {% endfor %}
+
+                </ul>
+
+			</div>
+
+			<div align="center" class="col-md-4">
+
+				<h4><span class="glyphicon glyphicon-map-marker"></span>&nbsp;Location</h4>
+
+				<br/>
+
+				<div class="content" id="map">
+
+				<script>
+				  function initMap() {
+					var location = {lat: {{ event.latitude }}, lng: {{ event.longitude }}};
+					var map = new google.maps.Map(document.getElementById('map'), {
+					  zoom: 14,
+					  center: location
+					});
+					var marker = new google.maps.Marker({
+					  position: location,
+					  map: map
+					});
+				  }
+				</script>
+
+				<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBsIw9-eLkQAZFKZwNFihHfi-1I8hD-cg&callback=initMap">
+				</script>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	<div class="row col-md-12">
+
+		<br/>
+
+		<h4 class="title">Messages</h4>
+
+		{% for post in event.posts.all %}
+
+		{% include "posts/_post.html" %}
+
+		{% endfor %}
+
+	</div>
+	<div class="row col-md-12">
+
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+	</div>
+</div>
+
+{% endblock %}
+
+
+
