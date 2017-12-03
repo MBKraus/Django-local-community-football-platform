@@ -11,8 +11,14 @@ Notable features:
 - Built using the Django authentication system (using custom password reset templates)
 - Includes mail templates (from MailChimp) for sign up confirmation and password resets
 
-#### Screenshot - homepage
-![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/master/Home.jpeg)
+#### Screenshot - Homepage
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Home.jpeg)
+
+#### Screenshot - Event
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Event_detail.jpeg)
+
+#### Screenshot - Event List
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Event_list.jpeg)
 
 ## Built With
 
