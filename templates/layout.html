@@ -1,0 +1,130 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% block robots %}{% endblock %}
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+        {% block title %}{% endblock %}
+
+        {% block metadescription %}{% endblock %}
+
+        {% block metakeywords %}{% endblock %}
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-default">
+
+			<div class="container-fluid">
+
+                 <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+
+                 </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+
+                    <ul class="nav navbar-nav">
+
+                        {% if user.is_authenticated %}
+
+						<li><a href="{% url 'events:list' %}" class="btn btn-simple"><span class="glyphicon glyphicon-th-list"></span> Matches </a></li>
+						<li><a href="{% url 'events:create' %}" class="btn btn-simple"><span class="glyphicon glyphicon-tree-deciduous"></span> Organise a match</a></li>
+
+                    </ul>
+
+                        {% else %}
+
+                        <!--<li><a href="{% url 'events:create' %}" class="btn btn-simple"><span class="glyphicon glyphicon-info-sign"></span> How does it work?</a></li>-->
+
+                    </ul>
+
+                        {% endif %}
+
+                    {% if user.is_authenticated %}
+
+                    <form class="navbar-form navbar-left hidden-xs" action="{% url 'events:search' %}" method=”GET” role="search">
+
+                        <div class="form-group">
+
+                            <input type=”text” name='q' placeholder="Search matches" class="form-control">
+
+                        </div>
+
+                        <button type=”submit” class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+
+                    </form>
+
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <p class="navbar-text hidden-xs">Logged in as {{ user.username }}</p>
+
+                        <li><a href="{% url 'profiles:profile' %}" class="btn btn-simple">  <span class="glyphicon glyphicon-user"></span> My Profile </a></li>
+                        <li><a href="{% url 'profiles:logout' %}" class="btn btn-simple"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+
+                    </ul>
+
+                    {% else %}
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="{% url 'profiles:login' %}" class="btn btn-simple"> <span class="glyphicon glyphicon-log-in"></span> Log in </a></li>
+						<li><a href="{% url 'profiles:signup' %}" class="btn btn-simple"><span class="glyphicon glyphicon-user"></span> Sign up </a></li>
+
+                    </ul>
+
+                    {% endif %}
+
+			    </div>
+
+            </div>
+
+		</nav>
+
+        {% block body_content %}{% endblock %}
+
+	</body>
+
+    <footer>
+
+        <div class="row">
+
+            <div align="center" class="col-md-12 panel-footer" id="footer">
+
+                <p><a class="btn btn-primary" href="mailto:info@potjevoetballen.nl" role="button">Contact us</a></p>
+                <p>Created by MK</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</html>

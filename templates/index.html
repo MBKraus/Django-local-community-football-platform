@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block robots %}
+
+<meta name="robots" content="index, nofollow">
+
+{% endblock %}
+
+{% block title %}
+
+<title>FootballPlatform.nl, if you want to play some football in your local community!</title>
+
+{% endblock %}
+
+{% block body_content %}
+
+			<div align="center" class="jumbotron">
+
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+                <h2 style="color:white;">Do you want to play a game of football in your local community?</h2>
+
+                <p style="color:white;">This is the spot</p>
+
+                {% if user.is_authenticated %}
+
+                <p><a class="btn btn-primary btn-lg" href="{% url 'events:list' %}" role="button">Browse upcoming matches</a></p>
+
+                {% else %}
+
+                <p><a class="btn btn-primary btn-lg" href="{% url 'profiles:signup' %}" role="button">Sign up now</a></p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6 panel-body">
+                        <div class="col-md-12">
+                        <h3> <span class="glyphicon glyphicon-th-list"></span> &nbsp; &nbsp; Upcoming matches </h3>
+
+                        <br/>
+
+                        <table class="table">
+
+                	    <tbody>
+
+                        {% for event in event %}
+
+                        <tr>
+                        <td><span class="glyphicon glyphicon-map-marker"></span> &nbsp;{{ event.address }}<br/></td>
+                        </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+
+            	        </table>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-6 panel-body">
+
+                        <div class="col-md-12">
+                        <h3 align="center"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; &nbsp;How does it work? </h3>
+                        <br/>
+                        <h4 align="center"><span class="label label-primary">1</span> &nbsp;Sign up</h4>
+                        <br/>
+                        <h4 align="center"><span class="label label-primary">2</span> &nbsp;Organise a match </h4>
+                        <br/>
+                        <h4 align="center"><span class="label label-primary">3</span> &nbsp;Go all out! </h4>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+{% endblock %}
+
