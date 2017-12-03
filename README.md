@@ -15,10 +15,10 @@ Notable features:
 ![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/master/gitpics/Home.jpg)
 
 #### Screenshot - Event
-![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Event_detail.jpeg)
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/master/gitpics/Event_detail.jpeg)
 
 #### Screenshot - Event List
-![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/gitpics/Event_list.jpeg)
+![alt text](https://raw.githubusercontent.com/Weesper1985/Django-local-community-football-platform/master/gitpics/Event_list.jpeg)
 
 ## Built With
 
